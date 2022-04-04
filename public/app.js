@@ -1,5 +1,5 @@
 // import the dataset to be used here
-const garments = require('./garments.json');
+
 let seasonFilter = 'All';
 let genderFilter = 'All';
 
