@@ -45,3 +45,31 @@ priceRangeElem.addEventListener('change', function(evt){
 });
 
 filterData();
+// fields to be read from the DOM
+//const domFields = {
+//	description,
+//	image,
+//	gender,
+//	season,
+//	price
+ // };
+  
+  //axios.post('/api/garments', domFields)
+	//.then((result) => {
+		// show snackbar - with success message
+		//console.log(result.data);
+	//})
+	//.catch(err => {
+	//  console.log(err);
+	//});
+//function myFunction() {
+	// Get the snackbar DIV
+	//var x = document.getElementById("snackbar");
+  
+	// Add the "show" class to DIV
+	//x.className = "show";
+  
+	// After 3 seconds, remove the show class from DIV
+	//setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+ // }
+  
