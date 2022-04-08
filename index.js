@@ -103,8 +103,15 @@ app.post('/api/garments', (req, res) => {
 	} else {
 
 		// you can check for duplicates here using garments.find
-		
+		// you can check for duplicates here using garments.find
+		if (garments.find(element => element.description === description)) {
+			res.json({
+				status: 'error',
+				message: 'Item already exists',
+			});
+		}
 		// add a new entry into the garments list
+		else {
 		garments.push({
 			description,
 			img,
@@ -118,5 +125,6 @@ app.post('/api/garments', (req, res) => {
 			message: 'New garment added.',
 		});
 	}
+}
 
 });

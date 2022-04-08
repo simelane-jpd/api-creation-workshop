@@ -56,6 +56,7 @@
 				R<span class="showPriceRange" >0</span>.00
 			</div>
 		</div>
+		<!--div class="message" id="snackbar"></div-->
 
 		<div>
 			<h2>Garments</h2>
@@ -63,13 +64,78 @@
 			<div class="searchResults" >
 
 			</div>
-		</div>
-		<!-- Use a button to open the snackbar -->
-<button onclick="myFunction()">Show Snackbar</button>
+			
+			<div class="addGarment" >
+			
+				<div class="add garment hidden">
+					<h2>Add a garment</h2>
+	
+			
+					<!--img src="/images/{{img}}" alt=""-->
+	
+					<!-- <form action="/garment/" method="post" class="addGarmentForm" > -->
+						<div class="field" >
+							<table><tr>Description
+								<th>
+									<input type="text" name="description" class="description">
+								</th>
+							</tr>
 
-<!-- The actual snackbar -->
-<div id="snackbar">Some text some message..</div>
+							</table>
+							
+						</div>
+						
+						<div class="field">
+							<table><tr>Price
+								<th><input type="number" name="price" step = "0.01" class="price" ></th></tr></table>
+							
+						</div>
+						<div class="field">
+							<table><tr>Gender
+								<th><input type="text" name="gender" class="gender" ></th>
+							</tr></table>
+							
+						</div>
+						<div class="field">
+							<table><tr>Season
+								<th><input type="text" name="season" class="season" ></th>
+							</tr></table>
+							
+						</div>
+						<div>Available images to choose from are : "green-dress.png, women-dress2.png, shirtmale.png, women-trouser.png, male-cap.png" so copy and paste the image name that matches the description to the image textbox below</div>
+						<div class="field" >
+							<table><tr>Image
+								
+								<th><input type="text"name="img" class="img"></th>
+							</tr></table>
+							
+						</div>
+						
+						<!--div class="link"> <p>
+							<a href="http://www.bing.com/images/search?q=dress%20clip%20art&qs=CT&form=QBIR&sp=1&pq=dress%20clip%20&sc=8-11&cvid=566FE547C65B48F1B83A2F9296254008&first=1&tsc=ImageHoverTitle">Pick any image here</a></p>
+						</div-->
+						<div class="mt1">
+							<input onclick="myFunction()" type="button" name="action" value="Add" class="addGarmentButton"  >
+							<input type="button" name="action" value="Hide" class="hideAddGarmentButton" >
+						</div>
+						<div>After clicking Add now click 'add a garment' below</div>
+						<div class="add button mt1" id="addGarmentButton">
+							<button><a href="">Add a garment</a></button></div>
+						
+					<!-- </form> -->
+				</div>
+	
+			</div>
+		
+	
+		<!--Use a button to open the snackbar -->
+<!--button onclick="myFunction()">Show Snackbar</button>
+
+
+<!div id="snackbar">Some text some message..</div-->
 	</div>
 	<script src="app.js"></script>
+	<script src="field-manager.js"></script>
+	<script src="add-garments.js"></script>
 </body>
 </html>
