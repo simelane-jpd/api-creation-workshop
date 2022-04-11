@@ -119,7 +119,7 @@ app.post('/api/garments', (req, res) => {
 			season,
 			price
 		});
-
+		fs.writeFileSync('./garments.json', JSON.stringify(garments))
 		res.json({
 			status: 'success',
 			message: 'New garment added.',

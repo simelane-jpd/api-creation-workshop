@@ -8,21 +8,21 @@ const addClothesButton = document.querySelector('.add.button');
 
 function showMessage(value) {
     popmsg.innerHTML = value;
-    // message.classList.toggle('hidden');
+     message.classList.toggle('hidden');
 
-    // setTimeout(() => {
-    //  message.innerHTML = '';
-    //  message.classList.toggle('hidden');
-    // }, 3000);
+    setTimeout(() => {
+      message.innerHTML = '';
+      message.classList.toggle('hidden');
+     }, 3000);
 }
 
 function clothesScreen() {
     addClothes.classList.toggle('hidden');
-    // addGarmetButtonSection.classList.toggle('hidden');
+     addGarmetButtonSection.classList.toggle('hidden');
 }
 
 hideAddGarmentButton.addEventListener('click', function (evt) {
-    clothesScreen()
+    toggleclothesScreen()
 });
 
 const fieldManager = FieldManager({
@@ -59,7 +59,7 @@ showMessage(err.stack)
 
 addClothes.addEventListener('click', function (evt) {
 evt.preventDefault();
-clothesScreen()
+toggleclothesScreen()
 });
 function myFunction() {
 // Get the snackbar DIV
