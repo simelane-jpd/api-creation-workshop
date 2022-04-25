@@ -3,6 +3,12 @@ const express = require('express');
 const app = express();
 const fs = require("fs");
 
+require('dotenv').config()
+//console.log(process.env)
+
+//const jwt = require('jsonwebtoken')
+app.use(express.json());
+
 // enable the static folder...
 app.use(express.static('public'));
 // enable the req.body object
@@ -16,7 +22,7 @@ const garments = require('./garments.json');
 const PORT = process.env.PORT || 4017;
 
 // API routes to be added here
-app.get('/api/garments', function (req, res) {
+app.get('/api/garments',  function (req, res) {
 	const gender = req.query.gender;
 	const season = req.query.season;
 
@@ -36,21 +42,8 @@ app.get('/api/garments', function (req, res) {
 	// there is no template
 	res.json({ garments: filteredGarments });
 });
-app.get('/api/garments/price/:price', function (req, res) {
-	const maxPrice = Number(req.params.price);
-	const filteredGarments = garments.filter(garment => {
-		// filter only if the maxPrice is bigger than maxPrice
-		if (maxPrice > 0) {
-			return garment.price <= maxPrice;
-		}
-		return true;
-	});
 
-	res.json({
-		garments: filteredGarments
-	});
-});
-app.post('/api/garments', (req, res) => {
+app.post('/api/garments',  (req, res) => {
 
 	// get the fields send in from req.body
 	const {
@@ -100,6 +93,54 @@ app.post('/api/garments', (req, res) => {
 	}
 
 });
+app.get('/api/garments/price/:price',  function (req, res) {
+	const maxPrice = Number(req.params.price);
+	const filteredGarments = garments.filter(garment => {
+		// filter only if the maxPrice is bigger than maxPrice
+		if (maxPrice > 0) {
+			return garment.price <= maxPrice;
+		}
+		return true;
+	});
+
+	res.json({
+		garments: filteredGarments
+	});
+});
+
 app.listen(PORT, function () {
 	console.log(`App started on port ${PORT}`)
 });
+
+
+//authenticate jwt
+//const generateAccessToken = (user) => {
+	//return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+	//  expiresIn: '24h',
+	//});
+ // };
+//LOGIN
+//app.post('/auth', (req, res) => {
+//	const username = req.query.username;
+//	if (username == 'simelane-jpd') {
+	//  const user = {username: 'simelane-jpd'};
+	//  const accessToken = generateAccessToken(user);
+	  //const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '24h'});
+	//  res.json({accessToken: accessToken});
+//	}
+	//res.sendStatus(401);
+  //});
+//authentification
+ //function authenticateToken(req, res, next) {
+	//const token = req.query.token;
+	//if (token == null) return res.sendStatus(401);
+	 //const autHeader = req.headers['authorization']
+    // const token = autHeader && autHeader.split(' ')[1]
+//if (token == null) return res.sendStatus(401);
+
+	//jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+	//  if (err) return res.sendStatus(403);
+	//  req.user = user;
+	//  next();
+	//});
+ // }

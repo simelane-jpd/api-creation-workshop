@@ -37,7 +37,7 @@ addGarmetBtn.addEventListener('click', function (evt) {
 	const fields = fieldManager.getValues();
 
 	axios
-		.post('/api/garments', fields)
+		.post(`/api/garments?token=${localStorage.getItem('accessToken')}` , fields)
 		.then(result => {
 			if (result.data.status == 'error') {
 				showMessage(result.data.message);
