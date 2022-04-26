@@ -44,7 +44,9 @@ genderOptions.addEventListener('click', function(evt){
 
 function filterData() {
 	axios
-		.get(`/api/garments?gender=${genderFilter}&season=${seasonFilter}`)
+		.get(`/api/garments?gender=${genderFilter}&season=${seasonFilter}&token=$localStorage.getItem('verifyToken',
+		)}`,
+		)
 			
 			
 			
@@ -53,6 +55,12 @@ function filterData() {
 			searchResultsElem.innerHTML = garmentsTemplate({
 				garments : result.data.garments
 			})
+			if (garmentsElem.classList.contains('hidden')) {
+				accessUpdate();
+			  }
+			})
+			.catch((err) => {
+			  accessUpdate();
 			
 		});
 }
@@ -61,38 +69,42 @@ priceRangeElem.addEventListener('change', function(evt){
 	const maxPrice = evt.target.value;
 	showPriceRangeElem.innerHTML = maxPrice;
 	axios
-		.get(`/api/garments/price/${maxPrice}`)
+		.get(`/api/garments/price/${maxPrice}?token=${localStorage.getItem(
+			'verifyToken',
+		)}`)
 			
 			
 		.then(function(result) {
 			searchResultsElem.innerHTML = garmentsTemplate({
 				garments : result.data.garments
 			})
+			
 		});
 });
-//const login = () => {
-	//axios
-	  //.post(`/auth?username=${usernameElem.value}`)
-	  //.then((result) => {
-		//localStorage.setItem('accessToken', result.data.accessToken);
-		//accessUpdate();
-		//filterData();
-	 // })
-	 // .catch((err) => {
-	//	loginElem.innerHTML += `<div style="color:red;">Access Denied<div>`;
-	 // });
- //};
+const login = () => {
+	axios
+	  .post(`/auth?username=${usernameElem.value}`)
+	  .then((result) => {
+		localStorage.setItem('verifyToken', result.data.verifyToken);
+		accessUpdate();
+		filterData();
+	  })
+	 .catch((err) => {
+		loginElem.innerHTML += `<div style="color:orange;">Access Denied!<div>`;
+	 });
+ };
   
- // loginBtn.addEventListener('click', () => {
-//	login();
- // });
+  loginBtn.addEventListener('click', () => {
+	login();
+  });
   
- // const accessUpdate = () => {
-	//filterElem.classList.toggle('hidden');
-	//addGarmentElem.classList.toggle('hidden');
-	//garmentsElem.classList.toggle('hidden');
-	//loginElem.classList.toggle('hidden');
-  //};
+  const accessUpdate = () => {
+	//searchResultsElem.classList.toggle('hidden');
+	filterElem.classList.toggle('hidden');
+	addGarmentElem.classList.toggle('hidden');
+	garmentsElem.classList.toggle('hidden');
+	loginElem.classList.toggle('hidden');
+  };
 filterData();
 // fields to be read from the DOM
 //const domFields = {
