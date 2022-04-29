@@ -28,6 +28,10 @@
 				<strong>{{price}}</strong>
 			</div>
 		</form>
+		<div class="hidden">
+			<button data-garmentId="{{id}}" >Add to cart</button>
+		</div>
+
 	</div>
 	{{/each}}
 		</div>
@@ -44,11 +48,18 @@
 			<input type="text" class="textInput">
 			<button class="userLogin">LOGIN</button>
 		</div-->
-		<div class="login">
+		<!--div class="login">
 			<label>Enter your username: <input type="text" id="username" /></label>
 			<button class="loginBtn">Login</button>
 		  </div-->
-		<div class="filter" >
+		  <div class="login">
+			<label>Enter your GitHub username: <input type="text" id="username" /></label>
+			<button class="loginBtn">Login</button>
+		</div>
+		<div class="error-message">
+			
+		</div>
+		<div class="filter hidden" >
 			<h2>Filter garments</h2>
 			<div class="genders" >
 				<label>
@@ -92,7 +103,7 @@
 
 		</div>
 
-		<div class="addGarment" >
+		<div class="addGarment hidden" >
 			
 			<div class="add button mt1" id="addGarmentBtn">
 				<button>Add a garment</button>
@@ -100,7 +111,7 @@
 
 			<div class="add garment hidden">
 				<h2>Add a garment</h2>
-				<img src="/images/{{img}}" alt="">
+				<!--img src="/images/{{img}}" alt=""-->
 
 				<!-- <form action="/garment/" method="post" class="addGarmentForm" > -->
 					
@@ -153,7 +164,7 @@
 						</div>
 				<!-- </form> -->
 			</div>
-			<div>
+			<div class="garments hidden">
 				<h2>Garments</h2>
 				
 				<div class="searchResults" >
