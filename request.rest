@@ -1,7 +1,5 @@
 GET   http://localhost:4017/api/garments
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpbWVsYW5lLWpwZCJ9.PqdZgojd_s_W938MoI1x9_pemDeLmhHy7R1QgRIjEH0
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoic2ltZWxhbmUtanBkIn0sImlhdCI6MTY1MTIzMjI0MX0.jIWGE1YjC6qs5dAzZWQrUxdxyZ2HdDpE_udkWAIK2ko
 
 
 

@@ -4,7 +4,7 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 const garments = require('./garments.json')
 const app = express()
-require("dotenv").config();
+//require("dotenv").config();
 app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -71,7 +71,7 @@ app.post('/api/garments', verifyToken, (req, res) => {
 });
 
 
-app.get('/api/garments/price/:price', verifyToken, (req, res) => {
+app.get('/api/garments/price/:price', verifyToken,  (req, res) => {
     const maxPrice = Number(req.params.price)
 	const filteredGarments = garments.filter(garment => {
 		if (maxPrice > 0) {
@@ -91,18 +91,33 @@ const generateToken = (user) => {
   });
 }
 
-app.post('/auth', (req, res) => {
-  const username = req.query.username
-    if(username == 'simelane-jpd'){
+//app.post('/auth', (req, res) => {
+  //const username = req.query.username
+   // if(username == 'simelane-jpd'){
       //console.log('works!')
-      const user = {username: 'simelane-jpd'}
-      const accessToken = generateToken(user)
-      res.json({accessToken: accessToken})
-     }else{
-       throw new Error('Access Denied')
-     }
-})
-
+     // const user = {username: 'simelane-jpd'}
+      //const accessToken = generateToken(user)
+      //res.json({accessToken: accessToken})
+    // }else{
+    //   throw new Error('Access Denied')
+    // }
+//})
+app.post('/auth', (req, res) => {
+	// Mock user
+	
+	  
+const user = {
+	  
+	  username: 'simelane-jpd',
+	 
+	}
+  
+	jwt.sign({user},'secretkey',  (err, token) => {
+		res.json({
+		  token
+		});
+	  });
+	});
 function verifyToken(req, res, next) {
   //get auth header value
   const bearerHeader = req.headers['authorization']
